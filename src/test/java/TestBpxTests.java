@@ -24,19 +24,19 @@ public class TestBpxTests {
         $("[id=firstName]").setValue("Vaia");
         $("[id=lastName]").setValue("Petrov");
         $("#userEmail").setValue("test@test.com");
-        $("#gender-radio-1").sendKeys(" ");
+        $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("790000000000");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-dropdown-container").$(byText("May")).click();
         $(".react-datepicker__year-select").$(byText("1990")).click();
         $(".react-datepicker__month").$(byText("2")).click();
         $("#subjectsInput").setValue("Mat").pressEnter();
-        $("#hobbies-checkbox-1").sendKeys(" ");
-        $("#hobbies-checkbox-2").sendKeys(" ");
+        $("#hobbiesWrapper").$(byText("Sports")).click();
+        $("#hobbiesWrapper").$(byText("Reading")).click();
         $("#uploadPicture").uploadFromClasspath("pictures/pic.png");
         $("#currentAddress").setValue("Lenina");
         $("#react-select-3-input").setValue("ncr").pressEnter();   //вместо клика лишнего
-        $("#react-select-4-input").setValue("noi").pressEnter();
+        $("#react-select-4-input").setValue("Noida").pressEnter();
         $("#submit").click();
         $(".modal-body").shouldHave(text("Vaia"),text("Petrov"), text("test@test.com"),
                 text("Male"), text("7900000000"), text("02 May,1990"), text("Math"), text("Sports"),
