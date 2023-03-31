@@ -48,9 +48,7 @@ public class RegistrationWithPageObjectsTests extends SetBasePageSettings {
                 .verifyResult("Mobile", userMobile)
                 .verifyResult("Date of Birth", userBirthDay)
                 .verifyResult("Subjects", userSubjects)
-                //.verifyResult("Hobbies", userHobbies1 + "," +userHobbies2)   не пойму, почему тест не проходит.
-                .verifyResult("Hobbies", userHobbies1)
-                .verifyResult("Hobbies", userHobbies2)
+                .verifyResult("Hobbies", userHobbies1 + ", " + userHobbies2)
                 .verifyResult("Picture", userPictureName)
                 .verifyResult("Address", userAddress)
                 .verifyResult("State and City", userState + " " + userCity);
