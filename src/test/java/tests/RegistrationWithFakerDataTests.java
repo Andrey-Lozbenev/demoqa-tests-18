@@ -1,30 +1,34 @@
 package tests;
 
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
-public class RegistrationWithPageObjectsTests extends SetBasePageSettings {
+import static tests.TestData.*;
+import static utils.RandomValuesUtils.getRandomItemFromArray;
+
+public class RegistrationWithFakerDataTests extends SetBasePageSettings {
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
     void successfulRegistrationTest() {
+        Faker faker = new Faker();
 
-
-        String userFirstName = "Vasia";
-        String userLastName = "Petrov";
-        String userEmail = "test@test.com";
-        String userGender = "Male";
-        String userMobile = "7900000000";
-        String userBirthDay = "2";
-        String userBirthMonth = "May";
-        String userBirthYear = "1990";
-        String userSubjects = "Maths";
-        String userHobbies = "Sports";
-        String userPicture = "pictures/pic.png";
-        String userPictureName = "pic.png";
-        String userAddress = "Lenina";
-        String userState = "ncr";
-        String userCity = "Noida";
+        String userFirstName = faker.name().firstName(),
+                userLastName = faker.name().lastName(),
+                userEmail = faker.internet().emailAddress(),
+                userGender = getRandomItemFromArray(gender),
+                userMobile = faker.phoneNumber().subscriberNumber(10),
+                userBirthDay = String.valueOf(faker.number().numberBetween(1, 28)),
+                userBirthMonth = getRandomItemFromArray(months),
+                userBirthYear = String.valueOf(faker.number().numberBetween(1900, 2022)),
+                userSubjects = getRandomItemFromArray(subjects),
+                userHobbies = getRandomItemFromArray(hobbiess),
+                userPicture = "pictures/pic.png",
+                userPictureName = "pic.png",
+                userAddress = faker.address().fullAddress(),
+                userState = getRandomItemFromArray(states),
+                userCity = getRandomItemFromArray(cities);
 
 
         registrationPage.openPage()
@@ -45,7 +49,7 @@ public class RegistrationWithPageObjectsTests extends SetBasePageSettings {
                 .verifyResult("Student Email", userEmail)
                 .verifyResult("Gender", userGender)
                 .verifyResult("Mobile", userMobile)
-                .verifyResult("Date of Birth", userBirthDay + " "  + userBirthMonth + "," + userBirthYear)
+                .verifyResult("Date of Birth", userBirthDay + " " + userBirthMonth + "," + userBirthYear)
                 .verifyResult("Subjects", userSubjects)
                 .verifyResult("Hobbies", userHobbies)
                 .verifyResult("Picture", userPictureName)

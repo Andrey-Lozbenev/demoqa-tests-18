@@ -68,9 +68,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setUserHobbies(String value1, String value2) {
-        hobbiesChecBoxs.$(byText(value1)).click();
-        hobbiesChecBoxs.$(byText(value2)).click();
+    public RegistrationPage setUserHobbies(String value) {
+        hobbiesChecBoxs.$(byText(value)).click();
         return this;
 
     }
