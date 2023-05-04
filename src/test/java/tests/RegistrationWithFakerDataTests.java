@@ -1,6 +1,7 @@
 package tests;
 
 import com.github.javafaker.Faker;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
@@ -12,6 +13,7 @@ public class RegistrationWithFakerDataTests extends SetBasePageSettings {
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
+    @Tag("remote")
     void successfulRegistrationTest() {
         Faker faker = new Faker();
 
