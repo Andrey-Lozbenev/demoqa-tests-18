@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
+import static io.qameta.allure.Allure.step;
 import static tests.TestData.*;
 import static utils.RandomValuesUtils.getRandomItemFromArray;
 
@@ -30,31 +31,36 @@ public class RegistrationWithFakerDataTests extends SetBasePageSettings {
                 userState = getRandomItemFromArray(states),
                 userCity = getRandomItemFromArray(cities);
 
+        step("Заполнение формы", () -> {
+            registrationPage.openPage()
+                    .setUserFirstName(userFirstName)
+                    .setUserLastName(userLastName)
+                    .setUserEmail(userEmail)
+                    .setUserGender(userGender)
+                    .setUserMobile(userMobile)
+                    .setUserBirthDate(userBirthDay, userBirthMonth, userBirthYear)
+                    .setUserSubjects(userSubjects)
+                    .setUserHobbies(userHobbies)
+                    .setUserPicture(userPicture)
+                    .setUserAddress(userAddress)
+                    .setUserState(userState)
+                    .setUserCity(userCity)
+                    .submitForm();
+        });
 
-        registrationPage.openPage()
-                .setUserFirstName(userFirstName)
-                .setUserLastName(userLastName)
-                .setUserEmail(userEmail)
-                .setUserGender(userGender)
-                .setUserMobile(userMobile)
-                .setUserBirthDate(userBirthDay, userBirthMonth, userBirthYear)
-                .setUserSubjects(userSubjects)
-                .setUserHobbies(userHobbies)
-                .setUserPicture(userPicture)
-                .setUserAddress(userAddress)
-                .setUserState(userState)
-                .setUserCity(userCity)
-                .submitForm();
-        registrationPage.verifyResult("Student Name", userFirstName + " " + userLastName)
-                .verifyResult("Student Email", userEmail)
-                .verifyResult("Gender", userGender)
-                .verifyResult("Mobile", userMobile)
-                .verifyResult("Date of Birth", userBirthDay + " " + userBirthMonth + "," + userBirthYear)
-                .verifyResult("Subjects", userSubjects)
-                .verifyResult("Hobbies", userHobbies)
-                .verifyResult("Picture", userPictureName)
-                .verifyResult("Address", userAddress)
-                .verifyResult("State and City", userState + " " + userCity);
+        step("Проверка формы", () -> {
+            registrationPage.verifyResult("Student Name", userFirstName + " " + userLastName)
+                    .verifyResult("Student Email", userEmail)
+                    .verifyResult("Gender", userGender)
+                    .verifyResult("Mobile", userMobile)
+                    .verifyResult("Date of Birth", userBirthDay + " " + userBirthMonth + "," + userBirthYear)
+                    .verifyResult("Subjects", userSubjects)
+                    .verifyResult("Hobbies", userHobbies)
+                    .verifyResult("Picture", userPictureName)
+                    .verifyResult("Address", userAddress)
+                    .verifyResult("State and City", userState + " " + userCity);
+
+        });
 
 
     }
