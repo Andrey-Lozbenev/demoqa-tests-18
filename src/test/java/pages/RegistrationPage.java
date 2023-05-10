@@ -25,8 +25,10 @@ public class RegistrationPage {
             cityInput = $("#react-select-4-input"),
             submitButton = $("#submit");
 
+
+
     public RegistrationPage openPage() {
-        open("https://demoqa.com/automation-practice-form");
+        open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;

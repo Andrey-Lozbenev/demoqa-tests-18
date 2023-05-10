@@ -49,6 +49,7 @@ task remote_test(type: Test) {
     }
 }
 
-test {
+tasks.withType(Test) {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
 }
