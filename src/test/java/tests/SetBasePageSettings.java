@@ -15,6 +15,7 @@ public class SetBasePageSettings {
     @BeforeAll
     static void beforeAll() {
         Configuration.pageLoadStrategy = "eager";
+        Configuration.baseUrl = System.getProperty("url_to_open","https://demoqa.com");
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
         Configuration.browserVersion = System.getProperty("browser_version","100.0");
