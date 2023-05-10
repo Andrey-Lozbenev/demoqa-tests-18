@@ -13,7 +13,7 @@ public class RegistrationWithFakerDataTests extends SetBasePageSettings {
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
-    @Tag("remote")
+    @Tag("simple")
     void successfulRegistrationTest() {
         Faker faker = new Faker();
 
