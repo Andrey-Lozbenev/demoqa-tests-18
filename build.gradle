@@ -35,6 +35,7 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
 }
 
 task remote_test(type: Test) {
